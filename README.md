@@ -1,15 +1,15 @@
 # nuxt-posts
 
-## Build Setup
+## Хэрхэн суулгах талаар
 
 ```bash
-# install dependencies
+# dependencies дотор байгаа пакежуудыг суулгах
 $ npm install
 
-# serve with hot reload at localhost:3000
+# сервэрээ асаах localhost:3000
 $ npm run dev
 
-# build for production and launch server
+# буйлд хийх
 $ npm run build
 $ npm run start
 
