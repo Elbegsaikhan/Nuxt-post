@@ -1,12 +1,10 @@
+import { INITIAL_DATA } from './index'
 
-
-import { INITIAL_DATA } from '/store/index'
-
-function fetchPostsAPI () {
+export function fetchPostsAPI () {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(INITIAL_DATA.posts)
-    }, 1000)
+    }, 200)
   })
 }
 
@@ -15,6 +13,13 @@ export const state = () => {
     items: []
   }
 }
+
+export const getters = {
+  hasEmptyItems (state) {
+    return state.items.length === 0
+  }
+}
+
 // Very good spot to send a request
 export const actions = {
   fetchPosts ({ commit }) {

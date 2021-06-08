@@ -38,6 +38,7 @@
 </template>
 
 <script>
+// import { fetchPostsAPI} from '~/store/post'
 
 export default {
   data () {
@@ -49,6 +50,16 @@ export default {
       }
     }
   },
+  fetch ({ store }) {
+    if (store.getters['post/hasEmptyItems']) {
+      console.log('fetching data index page')
+      return store.dispatch('post/fetchPosts')
+    }
+  },
+  // async asyncData () {
+  //   const posts = await fetchPostsAPI();
+  //   return { posts }
+  // }
   computed: {
     posts () {
       return this.$store.state.post.items
@@ -61,10 +72,10 @@ export default {
         return false
       }
     }
-  },
-  mounted () {
-    this.$store.dispatch('post/fetchPosts')
   }
+  // mounted () {
+  //   this.$store.dispatch('post/fetchPosts')
+  // }
 }
 </script>
 

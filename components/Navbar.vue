@@ -20,7 +20,7 @@
               <a class="navbar-link">Menu</a>
               <div class="navbar-dropdown">
                 <nuxt-link to="/" class="navbar-item">Home</nuxt-link>
-                <nuxt-linnk to="/manage" class="navbar-item">Manage</nuxt-linnk>
+                <nuxt-link to="/manage" class="navbar-item">Manage</nuxt-link>
               </div>
             </div>
           </div>

@@ -80,7 +80,12 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      posts: this.$store.state.posts
+    }
+  },
+  fetch ({ store }) {
+    if (store.getters['post/hasEmptyItems']) {
+      console.log('fetching data manage page')
+      return store.dispatch('post/fetchPosts')
     }
   },
   computed: {
