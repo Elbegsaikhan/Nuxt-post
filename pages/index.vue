@@ -1,8 +1,10 @@
 <template>
   <div>
-    <navbar></navbar>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-
+    <navbar />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    >
     <div class="blogs-page">
       <div class="main-content">
         <div class="container">
@@ -13,32 +15,58 @@
                   <h1>Шинэ мэдээ</h1>
                   <hr>
                 </div>
-                <post-item></post-item>
-                <post-item></post-item>
+                <post-item
+                  v-for="post in posts"
+                  :key="post._id"
+                  :title="post.title"
+                  :subtitle="post.subtitle"
+                  :date="post.createdAt"
+                  :is-read="post.isRead"
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
+      <form>
+        <input v-model="form.title" type="text">
+        <input v-model="form.subtitle" type="text">
+      </form>
+      {{ isFormValid }}
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+
+export default {
+  data () {
+    return {
+      title: ' Миний гарчиг',
+      form: {
+        title: 'some title',
+        subtitle: 'subtitle'
+      }
+    }
+  },
+  computed: {
+    posts () {
+      return this.$store.state.post.items
+    },
+    isFormValid () {
+      // console.log('isForm valid has been called')
+      if (this.title) {
+        return true
+      } else {
+        return false
+      }
+    }
+  },
+  mounted () {
+    this.$store.dispatch('post/fetchPosts')
+  }
+}
 </script>
 
 <style scoped>
-  .post-content{
-    font-style: italic;
-  }
-  .post {
-    margin-bottom: 20px;
-    padding: 5px;
-    border-bottom: 2px solid transparent;
-  }
-  .post:hover{
-    border-bottom: 2px solid #e8e8e8;
-  }
-
 </style>

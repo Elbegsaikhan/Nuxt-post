@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="../">
-            <img src="https://bulma.io/images/bulma-logo.png" alt="Lalriin logogogogogogo">
+            <img src="https://bulma.io/images/bulma-logo.png" alt="Lal">
           </a>
           <div class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
             <span></span>
@@ -12,15 +12,15 @@
             <span></span>
           </div>
         </div>
-        <div id="navMenu" class="navbar-menu">
+        <div @click="toggleIsActive" id="navMenu" class="navbar-menu">
           <div class="navbar-end">
-            <div class="navbar-item has-dropdown">
+            <div
+              :class="{'is-active': isActive }"
+              class="navbar-item has-dropdown ">
               <a class="navbar-link">Menu</a>
               <div class="navbar-dropdown">
-                <a class="navbar-item">Dashboard</a>
-                <a class="navbar-item">Profile</a>
-                <hr class="navbar-divider">
-                <div class="navbar-item">Log out</div>
+                <nuxt-link to="/" class="navbar-item">Home</nuxt-link>
+                <nuxt-linnk to="/manage" class="navbar-item">Manage</nuxt-linnk>
               </div>
             </div>
           </div>
@@ -31,20 +31,22 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      isActive: false
+    }
+  },
+  methods: {
+    toggleIsActive () {
+      this.isActive = !this.isActive
+    }
+  }
+}
 </script>
 
 <style scoped>
-.post-content{
-  font-style: italic;
-}
-.post {
-  margin-bottom: 20px;
-  padding: 5px;
-  border-bottom: 2px solid transparent;
-}
-.post:hover{
-  border-bottom: 2px solid #e8e8e8;
-}
-
+  a {
+    text-decoration: none;
+  }
 </style>
