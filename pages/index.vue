@@ -4,7 +4,7 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
-    >
+    />
     <div class="blogs-page">
       <div class="main-content">
         <div class="container">
@@ -13,7 +13,7 @@
               <div class="section">
                 <div class="title">
                   <h1>Шинэ мэдээ</h1>
-                  <hr>
+                  <hr />
                 </div>
                 <post-item
                   v-for="post in posts"
@@ -29,8 +29,8 @@
         </div>
       </div>
       <form>
-        <input v-model="form.title" type="text">
-        <input v-model="form.subtitle" type="text">
+        <input v-model="form.title" type="text" />
+        <input v-model="form.subtitle" type="text" />
       </form>
       {{ isFormValid }}
     </div>
@@ -41,19 +41,19 @@
 // import { fetchPostsAPI} from '~/store/post'
 
 export default {
-  data () {
+  data() {
     return {
-      title: ' Миний гарчиг',
+      title: " Миний гарчиг",
       form: {
-        title: 'some title',
-        subtitle: 'subtitle'
-      }
-    }
+        title: "some title",
+        subtitle: "subtitle",
+      },
+    };
   },
-  fetch ({ store }) {
-    if (store.getters['post/hasEmptyItems']) {
-      console.log('fetching data index page')
-      return store.dispatch('post/fetchPosts')
+  fetch({ store }) {
+    if (store.getters["post/hasEmptyItems"]) {
+      console.log("fetching data index page");
+      return store.dispatch("post/fetchPosts");
     }
   },
   // async asyncData () {
@@ -61,22 +61,23 @@ export default {
   //   return { posts }
   // }
   computed: {
-    posts () {
-      return this.$store.state.post.items
+    posts() {
+      return this.$store.state.post.items;
     },
-    isFormValid () {
+    isFormValid() {
       // console.log('isForm valid has been called')
-      if (this.title) {
-        return true
-      } else {
-        return false
-      }
-    }
-  }
+      // if (this.title) {
+      //   return true;
+      // } else {
+      //   return false;
+      // }
+      return !!this.title;
+    },
+  },
   // mounted () {
   //   this.$store.dispatch('post/fetchPosts')
   // }
-}
+};
 </script>
 
 <style scoped>
