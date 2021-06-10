@@ -48,10 +48,20 @@ export default {
     }
   },
   methods: {
-    createPost () {
-      this.$store.dispatch('post/createPost', this.form)
+    // NUXT SECTION 3 91
+    createPost (closeModal) {
+      this.$store.dispatch('post/createPost', { ...this.form }
+      )
       console.log(this.form)
+      closeModal()
+      this.resetForm()
+    },
+    resetForm () {
+      this.form.title = ''
+      this.form.subtitle = ''
+      this.form.content = ''
     }
+
   }
 }
 </script>

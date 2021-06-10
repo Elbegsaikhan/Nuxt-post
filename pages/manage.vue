@@ -32,20 +32,31 @@
           </div>
         </div>
         <div
-          class="column ig-6 message hero is-fullheight is-hidden id=message-pane"
+          class="column ig-6 message hero is-fullheight"
+          id="message-pane"
         >
           <div class="box message-preview">
-            <div class="top">
-              <div class="avatar">
-                <img src="c" />
+            <form class="post-form">
+              <div class="field">
+                <label class="label">Гарчиг</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Гайхалтай гарчиг">
+                </div>
               </div>
-              <div class="address">
-                <div class="name">John smith</div>
-                <div class="email">someone@gmail.com</div>
+              <div class="field">
+                <label class="label">Дэд гарчиг</label>
+                <div class="control">
+                  <input class="input" type="email" placeholder="Гайхалтай дэд гарчиг">
+                </div>
               </div>
-              <hr />
-              <div class="content"></div>
-            </div>
+              <div class="field">
+                <label class="label">Content</label>
+                <div class="control">
+                  <textarea class="textarea" placeholder="Гайхалтай нийтлэл"></textarea>
+                </div>
+              </div>
+              <button class="button is-primary">Шинэчлэх</button>
+            </form>
           </div>
         </div>
       </div>
