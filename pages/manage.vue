@@ -8,14 +8,7 @@
     <div class="manage-page">
       <div class="columns mail-app">
         <aside class="column is-2 aside hero">
-          <div>
-            <div class="compose has-text-centered">
-              <a class="button is-danger is-block is-bold">
-                <span class="compose">Create</span>
-              </a>
-              <div class="main"></div>
-            </div>
-          </div>
+          <app-post-create/>
         </aside>
         <div class="column is-4 messages hero is-fullheight" id="message-feed">
           <div class="inbox-messages" id="inbox-messages">
@@ -77,7 +70,9 @@
 
 <script>
 import { mapState } from 'vuex'
+import AppPostCreate from '~/components/PostCreate'
 export default {
+  components: { AppPostCreate },
   data () {
     return {
     }
@@ -106,5 +101,8 @@ export default {
 .card:hover {
   cursor: pointer;
   background-color: #eeeeee;
+}
+.post-form{
+  text-align: left;
 }
 </style>
