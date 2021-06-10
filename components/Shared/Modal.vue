@@ -1,9 +1,8 @@
 <template>
   <div>
-    <h1>88 aas ehlene</h1>
+    <h1>95 aas ehlene</h1>
     <div @click="isActive = true">
       <slot name="actionButton">
-<!--        <button @click="isActive = true" class="button is-danger is-block is-bold">Open</button>-->
       </slot>
     </div>
     <div :class="{ 'is-active': isActive}" class="modal">

@@ -13,7 +13,12 @@
         <div class="column is-4 messages hero is-fullheight" id="message-feed">
           <div class="inbox-messages" id="inbox-messages">
             <!--            Card start-->
-            <div v-for="post in posts" :key="post._id" class="card">
+            <div
+              v-for="post in posts"
+              :key="post._id"
+              @click="activatePost(post)"
+              :class="{ 'is-active': activePost && post._id === activePost._id}"
+              class="card">
               <div class="card-content">
                 <div class="msg-header">
                   <span class="msg-from"><small>From filip jerga</small></span>
@@ -36,27 +41,8 @@
           id="message-pane"
         >
           <div class="box message-preview">
-            <form class="post-form">
-              <div class="field">
-                <label class="label">Гарчиг</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Гайхалтай гарчиг">
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">Дэд гарчиг</label>
-                <div class="control">
-                  <input class="input" type="email" placeholder="Гайхалтай дэд гарчиг">
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">Content</label>
-                <div class="control">
-                  <textarea class="textarea" placeholder="Гайхалтай нийтлэл"></textarea>
-                </div>
-              </div>
-              <button class="button is-primary">Шинэчлэх</button>
-            </form>
+<!--            Post Manage Component-->
+            <post-manage :postData="activePost"/>
           </div>
         </div>
       </div>
@@ -86,6 +72,7 @@ export default {
   components: { AppPostCreate },
   data () {
     return {
+      activePost: {}
     }
   },
   fetch ({ store }) {
@@ -98,6 +85,17 @@ export default {
     ...mapState({
       posts: state => state.post.items
     })
+  },
+  created () {
+    if (this.posts && this.posts.length > 0) {
+      this.activePost = this.posts[0]
+    }
+  },
+  methods: {
+    activatePost (post) {
+      this.activePost = post
+      console.log('Active post', this.activePost)
+    }
   }
 }
 </script>
@@ -111,7 +109,10 @@ export default {
 }
 .card:hover {
   cursor: pointer;
-  background-color: #eeeeee;
+  background-color: #8BF7E3;
+}
+.is-active{
+  background-color: #8BF7E3;
 }
 .post-form{
   text-align: left;

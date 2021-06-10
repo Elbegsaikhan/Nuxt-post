@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import { INITIAL_DATA } from './index'
 
 export function fetchPostsAPI () {
@@ -33,6 +34,12 @@ export const actions = {
     postData.createdAt = new Date()
     console.log('Created Post :' + postData)
     commit('addPost', postData)
+  },
+  updatePost ({ commit, state }, postData) {
+    const postIndex = state.items.findIndex((post) => {
+      return post._id === postData._id
+    })
+    commit('replacePost', { post: postData, index: postIndex })
   }
 }
 // Mutations are simple functions
@@ -43,5 +50,8 @@ export const mutations = {
   addPost (state, post) {
     console.log(post)
     state.items.push(post)
+  },
+  replacePost (state, { post, index }) {
+    Vue.set(state.items, index, post)
   }
 }
